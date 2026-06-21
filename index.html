@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Studio - 네오브루탈리즘 QR 코드 생성기</title>
+    <meta name="description" content="세련된 네오브루탈리즘 디자인의 QR 코드를 즉시 생성하세요. URL 단축, 로고 삽입, 다양한 형식 다운로드 지원.">
+
+    <!-- Open Graph / Facebook / KakaoTalk -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://qr-neo-nu.vercel.app/">
+    <meta property="og:title" content="QR Studio - 네오브루탈리즘 QR 코드 생성기">
+    <meta property="og:description" content="세련된 네오브루탈리즘 디자인의 QR 코드를 즉시 생성하세요. URL 단축, 로고 삽입, 다양한 형식 다운로드 지원.">
+    <meta property="og:image" content="https://qr-neo-nu.vercel.app/og-image.png">
+    <meta property="og:image:secure_url" content="https://qr-neo-nu.vercel.app/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1252">
+    <meta property="og:image:height" content="550">
+    <meta property="og:image:alt" content="QR Studio - 세련된 디자인의 QR 코드를 즉시 생성하세요">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:site_name" content="QR Studio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="QR Studio - 네오브루탈리즘 QR 코드 생성기">
+    <meta name="twitter:description" content="세련된 네오브루탈리즘 디자인의 QR 코드를 즉시 생성하세요. URL 단축, 로고 삽입, 다양한 형식 다운로드 지원.">
+    <meta name="twitter:image" content="https://qr-neo-nu.vercel.app/og-image.png">
+    <meta name="twitter:image:alt" content="QR Studio - 세련된 디자인의 QR 코드를 즉시 생성하세요">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <h1>QR <span class="blue-text">Studio</span></h1>
+            <p>세련된 디자인의 QR 코드를 즉시 생성하세요</p>
+            <div class="creator-badge">제작자: 김진수</div>
+        </header>
+
+        <!-- Visual Guide Section -->
+        <section class="visual-guide">
+            <div class="guide-step">
+                <div class="step-icon"><i class="fa-solid fa-keyboard"></i></div>
+                <div class="step-text">
+                    <h3>1. 입력</h3>
+                    <p>내용을 입력하세요</p>
+                </div>
+            </div>
+            <div class="guide-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="guide-step">
+                <div class="step-icon"><i class="fa-solid fa-palette"></i></div>
+                <div class="step-text">
+                    <h3>2. 커스텀</h3>
+                    <p>스타일을 선택하세요</p>
+                </div>
+            </div>
+            <div class="guide-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="guide-step">
+                <div class="step-icon"><i class="fa-solid fa-file-export"></i></div>
+                <div class="step-text">
+                    <h3>3. 저장</h3>
+                    <p>원하는 형식으로 저장</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="generator-card">
+            <div class="config-panel">
+                <div class="input-group">
+                    <label for="qr-text">내용 (URL 또는 텍스트)</label>
+                    <div class="input-wrapper-row">
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-link"></i>
+                            <input type="text" id="qr-text" class="input-large" placeholder="https://example.com" value="https://google.com">
+                        </div>
+                        <button id="shorten-btn" class="brutal-btn-small">
+                            <i class="fa-solid fa-scissors"></i> URL 단축
+                        </button>
+                    </div>
+                </div>
+
+                <div id="short-url-result" class="short-url-box" style="display: none;">
+                    <label>단축된 URL</label>
+                    <div class="input-wrapper-row">
+                        <input type="text" id="short-url-output" class="short-url-input" readonly>
+                        <button id="copy-btn" class="brutal-btn-small copy-btn">
+                            <i class="fa-solid fa-copy"></i> 복사
+                        </button>
+                    </div>
+                </div>
+
+                <div class="customization-grid">
+                    <div class="input-group">
+                        <label for="dots-color">점 색상</label>
+                        <input type="color" id="dots-color" value="#f97316">
+                    </div>
+                    <div class="input-group">
+                        <label for="bg-color">배경 색상</label>
+                        <input type="color" id="bg-color" value="#ffffff">
+                    </div>
+                    <div class="input-group">
+                        <label for="dots-style">점 스타일</label>
+                        <select id="dots-style">
+                            <option value="square">Square</option>
+                            <option value="dots" selected>Dots</option>
+                            <option value="rounded">Rounded</option>
+                            <option value="extra-rounded">Extra Rounded</option>
+                            <option value="classy">Classy</option>
+                            <option value="classy-rounded">Classy Rounded</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="corners-style">모서리 스타일</label>
+                        <select id="corners-style">
+                            <option value="square">Square</option>
+                            <option value="dot">Dot</option>
+                            <option value="extra-rounded" selected>Extra Rounded</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="logo-upload">로고 이미지 추가 (중앙)</label>
+                    <div class="input-wrapper-row">
+                        <input type="file" id="logo-upload" accept="image/*" class="file-input">
+                        <button id="remove-logo-btn" class="brutal-btn-small danger">
+                            <i class="fa-solid fa-trash-can"></i> 제거
+                        </button>
+                    </div>
+                </div>
+
+                <div class="download-config">
+                    <div class="input-group">
+                        <label for="export-format">저장 형식</label>
+                        <select id="export-format">
+                            <option value="png">PNG</option>
+                            <option value="jpeg">JPG</option>
+                            <option value="svg">SVG</option>
+                            <option value="webp">WEBP</option>
+                        </select>
+                    </div>
+                    <button id="download-btn" class="primary-btn">
+                        <i class="fa-solid fa-download"></i> 다운로드
+                    </button>
+                </div>
+            </div>
+
+            <div class="preview-panel">
+                <div id="canvas-container">
+                    <!-- QR Code will be rendered here -->
+                </div>
+                <div class="preview-badge">실시간 미리보기</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 김진수. 무단 전재·복제·배포를 금합니다.</p>
+            <p style="font-size:11px;opacity:.5;margin-top:6px;">정리본 2026-06-21</p>
+        </footer>
+    </main>
+
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
